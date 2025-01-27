@@ -6,14 +6,21 @@ public class TransformController : MonoBehaviour
 {
 
     public GameObject target;
+    int distance = 3;
+    float fastRotation = 70f;
+    float slowRotation = 30f;
 
 
     void Update()
     {
-        var x = Mathf.PingPong(Time.time, 3);
-        var p = new Vector3(0, x, 0);
+        //Time.time returns a number that is increasing every frame, specifically the amount of time that has passed, in seconds, since the start of the program.
+        var x = Mathf.PingPong(Time.time, distance);
+        var p = new Vector3(-x, x, 0);
         target.transform.position = p;
 
-        target.transform.Rotate(new Vector3(0, 30, 0) * Time.deltaTime);
+        target.transform.Rotate(new Vector3(slowRotation, 0, fastRotation) * Time.deltaTime);
+        
     }
+
+
 }
